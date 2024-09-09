@@ -1,0 +1,8 @@
+@use "functions" as *;
+//reponsive
+$small:480px;
+$medium: 768px;
+$extra-large: 1440px;
+$desktop:$extra-large;
+$mobile: calc($small - 1px);
+$tablet: calc($medium - 1px);
