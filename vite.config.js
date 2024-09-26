@@ -1,31 +1,22 @@
 import { defineConfig } from "vite";
 
-// Import SCSS plugin (if needed)
-import path from "path";
-
 export default defineConfig({
   server: {
-    port: 3000, // The port on which the Vite server will run
+    port: 3000, // Server chạy trên cổng 3000
     proxy: {
-      "/api": "http://localhost:3001", // Proxy JSON-server for API calls
+      "/api": "http://localhost:3001", // Proxy tới JSON-server
     },
   },
   resolve: {
     alias: {
-      "@": path.resolve(__dirname, "./src"), // Alias to simplify imports
+      "@assets": "/src/assets", // Đặt alias cho thư mục chứa hình ảnh
     },
   },
-  css: {
-    preprocessorOptions: {
-      scss: {
-        additionalData: `@import "@/styles/global.scss";`, // Global SCSS imports
-      },
-    },
-  },
-  build: {
-    outDir: "dist", // Output folder for the build
-    rollupOptions: {
-      // Additional rollup configurations, if needed
-    },
-  },
+  // css: {
+  //   preprocessorOptions: {
+  //     scss: {
+  //       additionalData: `@import "@/src/stylesheets/main.scss";`, // Đường dẫn tới file SCSS chính
+  //     },
+  //   },
+  // },
 });
