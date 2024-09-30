@@ -9,5 +9,3 @@ import { UserView } from "./views/userView";
 // });
 // import UserController from "./controllers/userController";
 new UserController(new UserView(), new UserService());
-
-console.log("asdasdasd");
