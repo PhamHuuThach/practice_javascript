@@ -1,0 +1,119 @@
+@use "../abstracts/" as *;
+.header-container{
+    display: flex;
+    width: 100%;
+    justify-content: right;
+    position: relative;
+//    &__search{
+//     display: flex;
+//     justify-content: left;
+//     flex-direction: row;
+//     gap: 1em;
+//     width: 100%;
+//     height: 50px;
+//     margin: 5px;
+    
+//     .form-search input[type=text]{
+//         font-size: 17px;
+//         float: left;
+//         width: 35em;
+//         height: 100%;
+//         border: none;
+//         border-radius: 10px 0 0 10px;
+//     }
+//     .form-search button {
+//         float: left;
+//         width: 5em;
+//         height: 100%;
+//         padding: 10px;
+//         font-size: 17px;
+//         background: $white-color;
+//         border: none;
+//         cursor: pointer;
+//         border-radius: 0 10px 10px 0;
+//       }
+//     .addmember{
+//         display: flex;
+//         padding: 11px;
+//         width: 10em;
+//         height: 80%;
+//         gap: 10px;
+//         background: $blue-button;
+//         border-radius: 10px;
+//         border: none;
+//         margin: 5px;
+//     }
+//    }
+.wrap{
+    width: 60%;
+    height: 50px;
+    position: absolute;
+    top: 45%;
+    left: 32%;
+    transform: translate(-50%, -50%);
+    
+  }
+.search {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    display: flex;
+  }
+  .search  input[type=text] {
+    font-size: 25px;
+    width: 100%;
+    height: 100%;
+    border: none;
+    border-radius: 10px 0 0 10px;
+    outline: none;
+    border-right: none;
+  }
+  
+  .searchButton {
+    width: 50px;
+    height: 100%;
+    text-align: center;
+    background: $white-color;
+    border-radius: 0 10px 10px 0;
+    cursor: pointer;
+    font-size: 20px;
+    border: none;
+  }
+  
+
+   &__user{
+    width: 35%;
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    .addmember{
+        display: flex;
+        padding: 12px;
+        width: 10em;
+        height: 60%;
+        gap: 10px;
+        margin-top: 10px;
+        background: $blue-button;
+        border-radius: 10px;
+        border: none;
+    }
+   &__text{
+    padding-top: 12px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+   }
+   &__avatar{
+    margin-top: 12px;
+    display: flex;
+    gap: 20px;
+    justify-content: end;
+    width: 11em;
+    height: 60%;
+    border-left: 1px solid $dark-text-tiltecol;
+    img{
+        object-fit:cover
+    }
+   }
+   }
+}
