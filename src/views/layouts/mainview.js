@@ -1,4 +1,5 @@
 import { Banner } from "../components/bannerview";
+import { Table } from "../components/tableview";
 
 export const Main = () =>
   ` <div class="main">
@@ -6,6 +7,7 @@ export const Main = () =>
       ${Banner()}
     </div>
     <div id="main__table" class="main__table">
+      ${Table()}
     </div>
   </div>
 `;
