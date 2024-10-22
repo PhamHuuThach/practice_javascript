@@ -3,7 +3,12 @@ import { Home } from "./layouts/Home";
 export class UserView {
   constructor() {
     this.app = document.getElementById("app");
-    this.app.innerHTML = Home();
+  }
+
+  renderTable(users) {
+    this.app.innerHTML = "";
+    this.app.innerHTML = Home(users);
+    this.tableNode = this.getTableNode();
 
     this.closeBtn = document.getElementById("close");
     this.closeBtn.addEventListener("click", () => {
@@ -38,5 +43,8 @@ export class UserView {
       document.querySelector(".sidebar-container__footer").style.marginLeft =
         "3em";
     });
+  }
+  getTableNode() {
+    return document.getElementById("table__tbody");
   }
 }
