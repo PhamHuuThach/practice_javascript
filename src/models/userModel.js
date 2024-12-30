@@ -6,4 +6,22 @@ export class UserModel {
     this.position = position;
     this.email = email;
   }
+  static fromJSON(json) {
+    return new UserModel(
+      json.id,
+      json.name,
+      json.office,
+      json.position,
+      json.email
+    );
+  }
+  toJSON() {
+    return {
+      id: this.id,
+      name: this.name,
+      office: this.office,
+      position: this.position,
+      email: this.email,
+    };
+  }
 }

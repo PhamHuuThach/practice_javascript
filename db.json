@@ -13,6 +13,13 @@
       "office": "Phòng Nhân Sự",
       "position": "Trưởng Phòng",
       "email": "nguyenvanB@gmail.com"
+    },
+    {
+      "id": 3,
+      "name": "Nguyễn Văn B",
+      "office": "Phòng Nhân Sự",
+      "position": "Trưởng Phòng",
+      "email": "nguyenvanB@gmail.com"
     }
   ]
 }
