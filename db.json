@@ -1,6 +1,18 @@
 {
-  "data": [
-    { "id": 1, "name": "Item 1" },
-    { "id": 2, "name": "Item 2" }
+  "users": [
+    {
+      "id": 1,
+      "name": "Nghiêm Thị Kim Quý",
+      "office": "Phòng Kỹ Thuật",
+      "position": "Nhân Viên",
+      "email": "nguyenvanA@gmail.com"
+    },
+    {
+      "id": 2,
+      "name": "Nguyễn Văn B",
+      "office": "Phòng Nhân Sự",
+      "position": "Trưởng Phòng",
+      "email": "nguyenvanB@gmail.com"
+    }
   ]
 }

@@ -1,4 +1,4 @@
-export const Table = () => {
+export const Table = (users) => {
   return `<div class="table-container">
       <table class="table">
         <thead>
@@ -10,30 +10,18 @@ export const Table = () => {
           </tr>
         </thead>
         <tbody id="table__tbody">
+         ${users
+           .map(
+             (user) => `
         <tr>
-            <td>Nghiêm Thị Kim Qúy</td>
-            <td>Phòng Kỹ Thuật</td>
-            <td>Nhân Viên</td>
-            <td>nguyenvanA@gmail.com</td>
+          <td>${user.name}</td>
+          <td>${user.office}</td>
+          <td>${user.position}</td>
+          <td>${user.email}</td>
         </tr>
-        <tr>
-            <td>Nghiêm Thị Kim Qúy</td>
-            <td>Phòng Kỹ Thuật</td>
-            <td>Nhân Viên</td>
-            <td>nguyenvanA@gmail.com</td>
-        </tr>
-        <tr>
-            <td>Nghiêm Thị Kim Qúy</td>
-            <td>Phòng Kỹ Thuật</td>
-            <td>Nhân Viên</td>
-            <td>nguyenvanA@gmail.com</td>
-        </tr>
-        <tr>
-            <td>Nghiêm Thị Kim Qúy</td>
-            <td>Phòng Kỹ Thuật</td>
-            <td>Nhân Viên</td>
-            <td>nguyenvanA@gmail.com</td>
-        </tr>
+      `
+           )
+           .join("")}
     </tbody>
       </table>
     </div>
