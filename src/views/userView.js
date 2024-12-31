@@ -1,4 +1,4 @@
-import { Home } from "./layouts/Home";
+import { Home } from "./layouts/home";
 
 export class UserView {
   constructor() {

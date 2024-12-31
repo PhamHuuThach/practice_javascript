@@ -1,3 +1,4 @@
+import { UserService } from "../services/userService";
 export class UserController {
   constructor(view, service) {
     this.userView = view;

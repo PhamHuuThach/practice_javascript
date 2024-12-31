@@ -1,6 +1,3 @@
-import htm from "htm";
-import { h } from "preact";
-const html = htm.bind(h);
 export const Sidebar = () => {
   return `<div class="sidebar-container">
    <div id="open" class="sidebar-container__open">
