@@ -56,7 +56,7 @@ export const Sidebar = () => {
           <a href="">Quản lý phân quyền</a>
         </div>
       </div>
-      <div class="sidebar-container__list__item">
+      <div id="sidebar-container__list__item-Addmember" class="sidebar-container__list__item">
         <div class="sidebar-container__list__item__icon">
           <img src="assets/icons/addmember.svg" alt="" />
         </div>
