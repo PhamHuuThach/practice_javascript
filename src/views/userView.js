@@ -4,6 +4,42 @@ export class UserView {
   constructor() {
     this.app = document.getElementById("app");
   }
+  renderFormAddMember() {
+    this.openForm = document.getElementById(
+      "sidebar-container__list__item-Addmember"
+    );
+    this.openForm.addEventListener("click", (e) => {
+      e.preventDefault();
+      document.getElementById("main__addmember").style.display = "block";
+      document.getElementById("main__table").style.display = "none";
+    });
+  }
+
+  bindAddUser(callback) {
+    this.saveButton = document.getElementById("save-member");
+    this.saveButton.addEventListener("click", (e) => {
+      e.preventDefault();
+      const name = document.getElementById("name").value;
+      const office = document.getElementById("office").value;
+      const position = document.getElementById("position").value;
+      const email = document.getElementById("email").value;
+      if (name === "") {
+        alert("Cần điền name");
+        return;
+      } else if (office === "") {
+        alert("Cần điền office");
+        return;
+      } else if (position === "") {
+        alert("Cần điền position");
+        return;
+      } else if (email === "") {
+        alert("Cần điền email");
+        return;
+      } else {
+        callback({ name, office, position, email });
+      }
+    });
+  }
 
   renderTable(users) {
     this.app.innerHTML = "";

@@ -13,6 +13,11 @@ const routes = {
     // Route dành cho UserController
     new UserController(new UserView(), new UserService());
   },
+  adđmember: () => {
+    // Route thêm thành viên
+    new UserController(new UserView(), new UserService());
+  },
+
   404: () => {
     // Route không tìm thấy
     const app = document.getElementById("app");
