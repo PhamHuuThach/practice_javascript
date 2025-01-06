@@ -11,7 +11,13 @@ export class UserController {
     const users = await this.userService.getUsers();
     this.userView.renderTable(users);
     this.userView.bindAddUser(this.handleAddUser);
+    this.userView.bindDeleteUser(this.handleDeleteUser);
   }
+  //Delete controller
+  handleDeleteUser = async (userId) => {
+    await this.userService.deleteUser(userId);
+    this.loadUsers();
+  };
   //Add controller
   handleAddUser = async (userData) => {
     const newUser = new UserModel(
