@@ -4,16 +4,16 @@ export class UserView {
   constructor() {
     this.app = document.getElementById("app");
   }
-  renderFormAddMember() {
-    this.openForm = document.getElementById(
-      "sidebar-container__list__item-Addmember"
-    );
-    this.openForm.addEventListener("click", (e) => {
-      e.preventDefault();
-      document.getElementById("main__addmember").style.display = "block";
-      document.getElementById("main__table").style.display = "none";
-    });
-  }
+  // renderFormAddMember() {
+  //   this.openForm = document.getElementById(
+  //     "sidebar-container__list__item-Addmember"
+  //   );
+  //   this.openForm.addEventListener("click", (e) => {
+  //     e.preventDefault();
+  //     document.getElementById("main__addmember").style.display = "block";
+  //     document.getElementById("main__table").style.display = "none";
+  //   });
+  // }
 
   bindAddUser(callback) {
     this.saveButton = document.getElementById("save-member");
@@ -24,28 +24,27 @@ export class UserView {
       const position = document.getElementById("position").value;
       const email = document.getElementById("email").value;
       if (name === "") {
-        alert("Cần điền name");
+        alert("Cần nhập tên");
         return;
       } else if (office === "") {
-        alert("Cần điền office");
+        alert("Cần nhập thông tin Văn phòng");
         return;
       } else if (position === "") {
-        alert("Cần điền position");
+        alert("Cần nhập thông tin chức vụ");
         return;
       } else if (email === "") {
-        alert("Cần điền email");
+        alert("Cần nhập thông tin email cá nhân");
         return;
       } else {
         callback({ name, office, position, email });
       }
     });
   }
-
   renderTable(users) {
     this.app.innerHTML = "";
     this.app.innerHTML = Home(users);
     this.tableNode = this.getTableNode();
-
+    //Đống sidebar
     this.closeBtn = document.getElementById("close");
     this.closeBtn.addEventListener("click", () => {
       document.getElementById("home__left").style.width = "6%";
@@ -63,7 +62,7 @@ export class UserView {
       document.querySelector(".sidebar-container__footer__icon").style.width =
         "100%";
     });
-
+    //Mở sidebar
     this.openBtn = document.getElementById("open");
     this.openBtn.addEventListener("click", () => {
       document.getElementById("home__left").style.width = "20%";
@@ -78,6 +77,15 @@ export class UserView {
         .forEach((e) => (e.style.display = "block"));
       document.querySelector(".sidebar-container__footer").style.marginLeft =
         "3em";
+    });
+    //Render Form add
+    this.openForm = document.getElementById(
+      "sidebar-container__list__item-Addmember"
+    );
+    this.openForm.addEventListener("click", (e) => {
+      e.preventDefault();
+      document.getElementById("main__addmember").style.display = "block";
+      document.getElementById("main__table").style.display = "none";
     });
   }
   getTableNode() {

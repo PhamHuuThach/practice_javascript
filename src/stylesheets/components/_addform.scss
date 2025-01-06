@@ -2,7 +2,6 @@
 
 .add-member__form{
     width: 60%;
-    
   label{
     font-size: larger;
   }
@@ -16,7 +15,6 @@
     margin-bottom: 16px;
     resize: vertical;
   }
-  
   button {
     background-color: $blue-button;
     font-size: larger;
@@ -26,9 +24,7 @@
     border-radius: 4px;
     cursor: pointer;
   }
-  
   button:hover {
     background-color: $blue-background;
   }
-  
 }

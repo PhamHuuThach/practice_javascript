@@ -6,18 +6,13 @@ export class UserController {
     this.userService = service;
     this.loadUsers();
   }
-
+  //Load controller
   async loadUsers() {
     const users = await this.userService.getUsers();
     this.userView.renderTable(users);
-    this.bindFormAddMember();
     this.userView.bindAddUser(this.handleAddUser);
   }
-
-  bindFormAddMember() {
-    this.userView.renderFormAddMember();
-  }
-  //Addmember Controller
+  //Add controller
   handleAddUser = async (userData) => {
     const newUser = new UserModel(
       userData.id,
@@ -26,7 +21,6 @@ export class UserController {
       userData.position,
       userData.email
     );
-    console.log(newUser);
     await this.userService.addUser(newUser);
     this.loadUsers();
   };
