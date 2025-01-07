@@ -4,17 +4,7 @@ export class UserView {
   constructor() {
     this.app = document.getElementById("app");
   }
-  // renderFormAddMember() {
-  //   this.openForm = document.getElementById(
-  //     "sidebar-container__list__item-Addmember"
-  //   );
-  //   this.openForm.addEventListener("click", (e) => {
-  //     e.preventDefault();
-  //     document.getElementById("main__addmember").style.display = "block";
-  //     document.getElementById("main__table").style.display = "none";
-  //   });
-  // }
-
+  // Add User View
   bindAddUser(callback) {
     this.saveButton = document.getElementById("save-member");
     this.saveButton.addEventListener("click", (e) => {
@@ -90,5 +80,17 @@ export class UserView {
   }
   getTableNode() {
     return document.getElementById("table__tbody");
+  }
+  //Delete Table view
+  bindDeleteUser(handler) {
+    const deleteButtons = document.querySelectorAll(".delete-btn");
+    if (deleteButtons.length > 0) {
+      deleteButtons.forEach((btn) => {
+        btn.addEventListener("click", (event) => {
+          const userId = event.target.dataset.id;
+          handler(userId);
+        });
+      });
+    }
   }
 }

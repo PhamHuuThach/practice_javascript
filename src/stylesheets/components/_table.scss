@@ -42,6 +42,12 @@
                 background: $red-color;
                 color: $white-color;
             }
+            .edit-btn:hover {
+                scale: 1.1;
+            }
+            .delete-btn:hover {
+                scale: 1.1;
+            }
         }
     }
 }
