@@ -14,16 +14,16 @@ export class UserView {
       const position = document.getElementById("position").value;
       const email = document.getElementById("email").value;
       if (name === "") {
-        alert("Cần nhập tên");
+        alert("Need to fill in the  name");
         return;
       } else if (office === "") {
-        alert("Cần nhập thông tin Văn phòng");
+        alert("Need to fill in the office");
         return;
       } else if (position === "") {
-        alert("Cần nhập thông tin chức vụ");
+        alert("Need to fill in the position");
         return;
       } else if (email === "") {
-        alert("Cần nhập thông tin email cá nhân");
+        alert("Need to fill in the email");
         return;
       } else {
         callback({ name, office, position, email });
@@ -90,6 +90,59 @@ export class UserView {
           const userId = event.target.dataset.id;
           handler(userId);
         });
+      });
+    }
+  }
+  //Edit Table view
+  bindEditUser(handler) {
+    const editButtons = document.querySelectorAll(".edit-btn");
+    if (editButtons.length > 0) {
+      editButtons.forEach((btn) => {
+        btn.addEventListener("click", (event) => {
+          const userId = event.target.dataset.id;
+          handler(userId);
+        });
+      });
+    }
+  }
+  //Hiển thị dư liệu ra form sau khi click edit với userId đó
+  fillform(userid) {
+    document.getElementById("name").value = userid.name;
+    document.getElementById("office").value = userid.office;
+    document.getElementById("position").value = userid.position;
+    document.getElementById("email").value = userid.email;
+    document.getElementById("main__addmember").style.display = "block";
+    document.getElementById("main__table").style.display = "none";
+    document.getElementById("update-member").style.display = "block";
+    document.getElementById("save-member").style.display = "none";
+    document.getElementById("update-member").dataset.id = userid.id;
+  }
+  //Update member view
+  bindUpdateUser(callback) {
+    const updateButton = document.getElementById("update-member");
+    if (updateButton) {
+      updateButton.addEventListener("click", (e) => {
+        e.preventDefault();
+        const userId = e.target.dataset.id;
+        const name = document.getElementById("name").value;
+        const office = document.getElementById("office").value;
+        const position = document.getElementById("position").value;
+        const email = document.getElementById("email").value;
+        if (name === "") {
+          alert("Need to fill in the  name");
+          return;
+        } else if (office === "") {
+          alert("Need to fill in the office");
+          return;
+        } else if (position === "") {
+          alert("Need to fill in the position");
+          return;
+        } else if (email === "") {
+          alert("Need to fill in the email");
+          return;
+        } else {
+          callback(userId, { name, office, position, email });
+        }
       });
     }
   }

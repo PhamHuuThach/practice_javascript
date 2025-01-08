@@ -22,7 +22,7 @@ export const Table = (users) => {
         <td>${user.position}</td>
         <td>${user.email}</td>
          <td class="table__td">
-              <button class="edit-btn">Edit</button>
+              <button class="edit-btn" data-id="${user.id}">Edit</button>
               <button class="delete-btn" data-id="${user.id}">Delete</button>
             </td>
       </tr>
