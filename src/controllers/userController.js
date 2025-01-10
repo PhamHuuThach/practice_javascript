@@ -12,8 +12,8 @@ export class UserController {
     this.userView.renderTable(users);
     this.userView.bindAddUser(this.handleAddUser);
     this.userView.bindDeleteUser(this.handleDeleteUser);
-    this.userView.bindEditUser(this.handleEditUser);
-    this.userView.bindUpdateUser(this.handleUpdateUser);
+    this.userView.bindEditUser(this.handleEditUsertoForm);
+    this.userView.bindUpdateUser(this.handleUpdateUsertoData);
   }
   //Delete controller
   handleDeleteUser = async (userId) => {
@@ -32,15 +32,15 @@ export class UserController {
     await this.userService.addUser(newUser);
     this.loadUsers();
   };
-  //Edit controller
-  handleEditUser = async (userId) => {
+  //Edit row id data Table to form
+  handleEditUsertoForm = async (userId) => {
     const user = await this.userService.getUserById(userId);
-    this.userView.fillform(user);
+    this.userView.fillForm(user);
   };
-  //Update controller
-  handleUpdateUser = async (userid, userData) => {
+  //Update data id to data model
+  handleUpdateUsertoData = async (userid, userData) => {
     const user = new UserModel(
-      userid, // Dữ liệu user đã cập nhật từ form
+      userid,
       userData.name,
       userData.office,
       userData.position,

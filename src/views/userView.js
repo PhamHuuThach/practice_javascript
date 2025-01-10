@@ -13,20 +13,10 @@ export class UserView {
       const office = document.getElementById("office").value;
       const position = document.getElementById("position").value;
       const email = document.getElementById("email").value;
-      if (name === "") {
-        alert("Need to fill in the  name");
-        return;
-      } else if (office === "") {
-        alert("Need to fill in the office");
-        return;
-      } else if (position === "") {
-        alert("Need to fill in the position");
-        return;
-      } else if (email === "") {
-        alert("Need to fill in the email");
-        return;
-      } else {
+      if (this.validateInput(name, office, position, email)) {
         callback({ name, office, position, email });
+      } else {
+        alert("Add button not found");
       }
     });
   }
@@ -106,7 +96,7 @@ export class UserView {
     }
   }
   //Hiển thị dư liệu ra form sau khi click edit với userId đó
-  fillform(userid) {
+  fillForm(userid) {
     document.getElementById("name").value = userid.name;
     document.getElementById("office").value = userid.office;
     document.getElementById("position").value = userid.position;
@@ -128,22 +118,30 @@ export class UserView {
         const office = document.getElementById("office").value;
         const position = document.getElementById("position").value;
         const email = document.getElementById("email").value;
-        if (name === "") {
-          alert("Need to fill in the  name");
-          return;
-        } else if (office === "") {
-          alert("Need to fill in the office");
-          return;
-        } else if (position === "") {
-          alert("Need to fill in the position");
-          return;
-        } else if (email === "") {
-          alert("Need to fill in the email");
-          return;
-        } else {
+        if (this.validateInput(name, office, position, email)) {
           callback(userId, { name, office, position, email });
+        } else {
+          alert("Update button not found");
         }
       });
+    }
+  }
+  // Kiểm tra dữ liệu đầu vào
+  validateInput(name, office, position, email) {
+    if (name === "") {
+      alert("Need to fill in the  name");
+      return;
+    } else if (office === "") {
+      alert("Need to fill in the office");
+      return;
+    } else if (position === "") {
+      alert("Need to fill in the position");
+      return;
+    } else if (email === "") {
+      alert("Need to fill in the email");
+      return;
+    } else {
+      return true;
     }
   }
 }
