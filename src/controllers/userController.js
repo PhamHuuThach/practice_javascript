@@ -12,6 +12,8 @@ export class UserController {
     this.userView.renderTable(users);
     this.userView.bindAddUser(this.handleAddUser);
     this.userView.bindDeleteUser(this.handleDeleteUser);
+    this.userView.bindEditUser(this.handleEditUsertoForm);
+    this.userView.bindUpdateUser(this.handleUpdateUsertoData);
   }
   //Delete controller
   handleDeleteUser = async (userId) => {
@@ -28,6 +30,23 @@ export class UserController {
       userData.email
     );
     await this.userService.addUser(newUser);
+    this.loadUsers();
+  };
+  //Edit row id data Table to form
+  handleEditUsertoForm = async (userId) => {
+    const user = await this.userService.getUserById(userId);
+    this.userView.fillForm(user);
+  };
+  //Update data id to data model
+  handleUpdateUsertoData = async (userid, userData) => {
+    const user = new UserModel(
+      userid,
+      userData.name,
+      userData.office,
+      userData.position,
+      userData.email
+    );
+    await this.userService.updateUser(user);
     this.loadUsers();
   };
 }

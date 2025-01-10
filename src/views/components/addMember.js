@@ -18,7 +18,8 @@ export const addMember = () => `
             <input type="text" id="email" name="email" placeholder="nguyenvanc@gmail" />
         </div>
         <div class="add-member__form__button">
-            <button id="save-member" type="submit">Save</button>
+            <button id="save-member" class="save-member" type="submit">Save</button>
+            <button id="update-member" class="update-member" type="submit">Update</button>
         </div>
     </div>
 </div>`;

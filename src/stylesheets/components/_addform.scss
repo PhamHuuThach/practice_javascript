@@ -24,6 +24,12 @@
     border-radius: 4px;
     cursor: pointer;
   }
+  .save-member{
+    display: block;
+  }
+  .update-member{
+    display: none;
+  }
   button:hover {
     background-color: $blue-background;
   }
