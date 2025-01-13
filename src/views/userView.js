@@ -144,4 +144,33 @@ export class UserView {
       return true;
     }
   }
+  // Nhập từ khóa ở ô tìm kiếm
+  bindSearch(callback) {
+    var input = document.getElementById("searchTerm");
+    input.addEventListener("input", () => {
+      const filter = input.value.toUpperCase(); // Giá trị sau khi nhập khóa ở ô tìm kiếm trong input key td User
+      callback(filter);
+    });
+  }
+  //Cập nhật lại dữ liệu trong table sau khi tìm kiếm
+  updateSearchResults(filteredUsers) {
+    const table = document.getElementById("main__table");
+    const tbody = table.querySelector("#table__tbody");
+    const rows = tbody.getElementsByTagName("tr");
+    for (let i = 0; i < rows.length; i++) {
+      const td = rows[i].getElementsByTagName("td")[0];
+      if (td) {
+        const txtValue = td.textContent || td.innerText;
+        if (
+          filteredUsers.some((user) =>
+            user.name.toUpperCase().includes(txtValue.toUpperCase())
+          )
+        ) {
+          rows[i].style.display = "";
+        } else {
+          rows[i].style.display = "none";
+        }
+      }
+    }
+  }
 }

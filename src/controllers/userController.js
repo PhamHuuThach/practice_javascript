@@ -14,6 +14,7 @@ export class UserController {
     this.userView.bindDeleteUser(this.handleDeleteUser);
     this.userView.bindEditUser(this.handleEditUsertoForm);
     this.userView.bindUpdateUser(this.handleUpdateUsertoData);
+    this.userView.bindSearch(this.handleSearch);
   }
   //Delete controller
   handleDeleteUser = async (userId) => {
@@ -48,5 +49,13 @@ export class UserController {
     );
     await this.userService.updateUser(user);
     this.loadUsers();
+  };
+  // Handle search action
+  handleSearch = async (searchTerm) => {
+    const users = await this.userService.getUsers();
+    const filteredUsers = users.filter((user) =>
+      user.name.toUpperCase().includes(searchTerm.toUpperCase())
+    );
+    this.userView.updateSearchResults(filteredUsers);
   };
 }

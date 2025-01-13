@@ -1,7 +1,7 @@
 export const Table = (users) => {
   return `
   <div class="table-container">
-  <table class="table">
+  <table id="main__table" class="table">
     <thead>
       <tr>
         <th class="table__th">User</th>
