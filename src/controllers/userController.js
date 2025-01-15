@@ -5,10 +5,12 @@ export class UserController {
     this.userView = view;
     this.userService = service;
     this.loadUsers();
+    this.users = [];
   }
   //Load controller
   async loadUsers() {
     const users = await this.userService.getUsers();
+    this.users = users;
     this.userView.renderTable(users);
     this.userView.bindAddUser(this.handleAddUser);
     this.userView.bindDeleteUser(this.handleDeleteUser);
@@ -52,10 +54,9 @@ export class UserController {
   };
   // Handle search action
   handleSearch = async (searchTerm) => {
-    const users = await this.userService.getUsers();
-    const filteredUsers = users.filter((user) =>
+    const filteredUsers = this.users.filter((user) =>
       user.name.toUpperCase().includes(searchTerm.toUpperCase())
     );
-    this.userView.updateSearchResults(filteredUsers);
+    this.userView.renderTable(filteredUsers);
   };
 }

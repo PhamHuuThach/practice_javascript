@@ -16,7 +16,7 @@ export class UserView {
       if (this.validateInput(name, office, position, email)) {
         callback({ name, office, position, email });
       } else {
-        alert("Add button not found");
+        console.log("Save button not found");
       }
     });
   }
@@ -121,56 +121,51 @@ export class UserView {
         if (this.validateInput(name, office, position, email)) {
           callback(userId, { name, office, position, email });
         } else {
-          alert("Update button not found");
+          console.log("Update button not found");
         }
       });
     }
   }
-  // Kiểm tra dữ liệu đầu vào
+  //Hiển thị lỗi
+  showError(key, mess) {
+    document.getElementById(key + "-error").innerHTML = mess;
+    document.getElementById(key + "-error").style.color = "red";
+  }
   validateInput(name, office, position, email) {
-    if (name === "") {
-      alert("Need to fill in the  name");
-      return;
-    } else if (office === "") {
-      alert("Need to fill in the office");
-      return;
-    } else if (position === "") {
-      alert("Need to fill in the position");
-      return;
-    } else if (email === "") {
-      alert("Need to fill in the email");
-      return;
-    } else {
-      return true;
+    //1. Name
+    if (name == "") {
+      this.showError("name", "Need to fill in the name");
+      return false;
     }
+    //2. Office
+    if (office == "") {
+      this.showError("office", "Need to fill in the office");
+      return false;
+    }
+    //3. Position
+    if (position == "") {
+      this.showError("position", "Need to fill in the position");
+      return false;
+    }
+    //4. Email
+    var emailFormat =
+      /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
+    if (email == "") {
+      this.showError("email", "Need to fill in the email");
+      return false;
+    } else if (!email.match(emailFormat)) {
+      this.showError("email", "Email is not valid");
+      return false;
+    }
+    return true;
   }
   // Nhập từ khóa ở ô tìm kiếm
   bindSearch(callback) {
-    var input = document.getElementById("searchTerm");
-    input.addEventListener("input", () => {
-      const filter = input.value.toUpperCase(); // Giá trị sau khi nhập khóa ở ô tìm kiếm trong input key td User
-      callback(filter);
+    const searchBtn = document.querySelector(".searchButton");
+    const searchInput = document.querySelector(".searchTerm");
+    searchBtn.addEventListener("click", function () {
+      const searchInputValue = searchInput.value.toLowerCase();
+      callback(searchInputValue);
     });
-  }
-  //Cập nhật lại dữ liệu trong table sau khi tìm kiếm
-  updateSearchResults(filteredUsers) {
-    const table = document.getElementById("main__table");
-    const tbody = table.querySelector("#table__tbody");
-    const rows = tbody.getElementsByTagName("tr");
-    for (let i = 0; i < rows.length; i++) {
-      const td = rows[i].getElementsByTagName("td")[0];
-      if (td) {
-        const txtValue = td.textContent || td.innerText;
-        if (
-          filteredUsers.some((user) =>
-            user.name.toUpperCase().includes(txtValue.toUpperCase())
-          )
-        ) {
-          rows[i].style.display = "";
-        } else {
-          rows[i].style.display = "none";
-        }
-      }
-    }
   }
 }
