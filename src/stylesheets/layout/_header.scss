@@ -29,7 +29,6 @@
     outline: none;
     border-right: none;
   }
-  
   .searchButton {
     width: 50px;
     height: 100%;
@@ -40,8 +39,10 @@
     font-size: 20px;
     border: none;
   }
-  
-
+  .searchButton:hover {
+    background: $blue-button;
+    scale: 1.1;
+  }
    &__user{
     width: 35%;
     display: flex;

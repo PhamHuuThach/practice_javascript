@@ -2,7 +2,7 @@ export const Header = () => {
   return `<div class="header-container">
 <div class="wrap">
    <div class="search">
-      <input type="text" class="searchTerm" placeholder="Search here">
+      <input type="text" class="searchTerm" id="searchTerm" placeholder="Search here">
       <button type="submit" class="searchButton">
         <i class=""> <img src="assets/icons/search.svg" alt="avatar"/></i>
      </button>

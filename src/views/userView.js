@@ -13,20 +13,10 @@ export class UserView {
       const office = document.getElementById("office").value;
       const position = document.getElementById("position").value;
       const email = document.getElementById("email").value;
-      if (name === "") {
-        alert("Cần nhập tên");
-        return;
-      } else if (office === "") {
-        alert("Cần nhập thông tin Văn phòng");
-        return;
-      } else if (position === "") {
-        alert("Cần nhập thông tin chức vụ");
-        return;
-      } else if (email === "") {
-        alert("Cần nhập thông tin email cá nhân");
-        return;
-      } else {
+      if (this.validateInput(name, office, position, email)) {
         callback({ name, office, position, email });
+      } else {
+        console.log("Save button not found");
       }
     });
   }
@@ -92,5 +82,90 @@ export class UserView {
         });
       });
     }
+  }
+  //Edit Table view
+  bindEditUser(handler) {
+    const editButtons = document.querySelectorAll(".edit-btn");
+    if (editButtons.length > 0) {
+      editButtons.forEach((btn) => {
+        btn.addEventListener("click", (event) => {
+          const userId = event.target.dataset.id;
+          handler(userId);
+        });
+      });
+    }
+  }
+  //Hiển thị dư liệu ra form sau khi click edit với userId đó
+  fillForm(userid) {
+    document.getElementById("name").value = userid.name;
+    document.getElementById("office").value = userid.office;
+    document.getElementById("position").value = userid.position;
+    document.getElementById("email").value = userid.email;
+    document.getElementById("main__addmember").style.display = "block";
+    document.getElementById("main__table").style.display = "none";
+    document.getElementById("update-member").style.display = "block";
+    document.getElementById("save-member").style.display = "none";
+    document.getElementById("update-member").dataset.id = userid.id;
+  }
+  //Update member view
+  bindUpdateUser(callback) {
+    const updateButton = document.getElementById("update-member");
+    if (updateButton) {
+      updateButton.addEventListener("click", (e) => {
+        e.preventDefault();
+        const userId = e.target.dataset.id;
+        const name = document.getElementById("name").value;
+        const office = document.getElementById("office").value;
+        const position = document.getElementById("position").value;
+        const email = document.getElementById("email").value;
+        if (this.validateInput(name, office, position, email)) {
+          callback(userId, { name, office, position, email });
+        } else {
+          console.log("Update button not found");
+        }
+      });
+    }
+  }
+  //Hiển thị lỗi
+  showError(key, mess) {
+    document.getElementById(key + "-error").innerHTML = mess;
+    document.getElementById(key + "-error").style.color = "red";
+  }
+  validateInput(name, office, position, email) {
+    //1. Name
+    if (name == "") {
+      this.showError("name", "Need to fill in the name");
+      return false;
+    }
+    //2. Office
+    if (office == "") {
+      this.showError("office", "Need to fill in the office");
+      return false;
+    }
+    //3. Position
+    if (position == "") {
+      this.showError("position", "Need to fill in the position");
+      return false;
+    }
+    //4. Email
+    var emailFormat =
+      /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
+    if (email == "") {
+      this.showError("email", "Need to fill in the email");
+      return false;
+    } else if (!email.match(emailFormat)) {
+      this.showError("email", "Email is not valid");
+      return false;
+    }
+    return true;
+  }
+  // Nhập từ khóa ở ô tìm kiếm
+  bindSearch(callback) {
+    const searchBtn = document.querySelector(".searchButton");
+    const searchInput = document.querySelector(".searchTerm");
+    searchBtn.addEventListener("click", function () {
+      const searchInputValue = searchInput.value.toLowerCase();
+      callback(searchInputValue);
+    });
   }
 }
